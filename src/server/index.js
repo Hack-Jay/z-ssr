@@ -4,12 +4,13 @@ import {
     renderToString
 } from 'react-dom/server'
 import koaStatic from 'koa-static';
+import cors from 'koa-cors'
 import Home from '../client/page/Home'
 
 const app = new Koa();
 
+app.use(cors());
 app.use(koaStatic('./dist/static'));
-
 
 const content = renderToString( < Home /> )
 console.log('reload', content)
@@ -23,7 +24,7 @@ const htmlTemplete = `
 </head>
 <body>
     <div id="root">${content}</div>
-    <script type="text/javascript" src="index.js"></script>
+    <script type="text/javascript" src="//localhost:9000/index.js"></script>
 </body>
 </html>
 `

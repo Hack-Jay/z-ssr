@@ -12,7 +12,10 @@ const clientConfig = {
         publicPath: 'http://localhost:9000/'
     },
     devServer: {
-        // quiet: true,
+        quiet: true,
+        headers: {
+            'Access-Control-Allow-Origin': '*'
+        },  
         contentBase: path.join(__dirname, '../dist/static'),
         publicPath: 'http://localhost:9000/',
         hot: true,
@@ -26,7 +29,7 @@ const clientConfig = {
             poll: 500
         }
     },
-	plugins: [new webpack.HotModuleReplacementPlugin()]
+    plugins: [new webpack.HotModuleReplacementPlugin()]
 
 }
 

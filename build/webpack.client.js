@@ -3,6 +3,7 @@ const webpack = require('webpack')
 const merge = require('webpack-merge')
 const baseConfig = require('./webpack.common')
 
+
 const clientConfig = {
     mode: 'development',
     entry: path.join(__dirname, '../src', 'client/index.js'),

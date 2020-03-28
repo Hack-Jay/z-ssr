@@ -11,7 +11,7 @@ module.exports = {
                 path.resolve(__dirname, '../node_modules')
             ],
             loader: 'babel-loader',
-            query: {
+            options: {
                 presets: [
                     ["@babel/preset-react"],
                     ["@babel/env", {
@@ -19,6 +19,9 @@ module.exports = {
                             "browsers": "last 2 chrome versions"
                         }
                     }]
+                ],
+                plugins: [
+                    ["react-hot-loader/babel"]
                 ]
             }
         }]

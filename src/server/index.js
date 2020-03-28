@@ -12,7 +12,7 @@ app.use(koaStatic('./dist/static'));
 
 
 const content = renderToString( < Home /> )
-
+console.log('reload', content)
 const htmlTemplete = `
 <!DOCTYPE html>
 <html lang="en">

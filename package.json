@@ -24,7 +24,6 @@
   "dependencies": {
     "@babel/preset-react": "^7.9.4",
     "koa": "^2.11.0",
-    "koa-cors": "^0.0.16",
     "koa-static": "^5.0.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",

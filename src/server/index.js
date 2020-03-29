@@ -4,12 +4,10 @@ import {
     renderToString
 } from 'react-dom/server'
 import koaStatic from 'koa-static';
-import cors from 'koa-cors'
 import Home from '../client/page/Home'
 
 const app = new Koa();
 
-// app.use(cors());
 app.use(koaStatic('./dist/static'));
 
 const content = renderToString( < Home /> )

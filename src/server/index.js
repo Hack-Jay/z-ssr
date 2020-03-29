@@ -9,7 +9,7 @@ import Home from '../client/page/Home'
 
 const app = new Koa();
 
-app.use(cors());
+// app.use(cors());
 app.use(koaStatic('./dist/static'));
 
 const content = renderToString( < Home /> )

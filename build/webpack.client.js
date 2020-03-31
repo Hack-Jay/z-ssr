@@ -11,6 +11,7 @@ const clientConfig = {
         filename: "index.js",
         publicPath: 'http://localhost:9000/'
     },
+    devtool: 'source-map',
     devServer: {
         quiet: true,
         headers: {

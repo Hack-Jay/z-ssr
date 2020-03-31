@@ -5,7 +5,7 @@ const Home = () => {
         home page <br />
         hot replace.
         <p>
-            <button onClick={() => alert('you have click')}>click</button>
+            <button onClick={() => alert('you have click...')}>click</button>
         </p>
     </div>
 }

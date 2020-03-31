@@ -3,14 +3,18 @@ import {
     renderToString
 } from 'react-dom/server'
 import { StaticRouter } from 'react-router-dom'
+import { Provider } from 'react-redux'
 import routes from '../../client/router'
+import getStroe from '../../client/store'
 
 const renderHtml = (ctx) => {
 
     const content = renderToString(
-        <StaticRouter location={ctx.url} context={{}}>
-            {routes}
-        </StaticRouter>
+        <Provider store={getStroe()}>
+            <StaticRouter location={ctx.url} context={{}}>
+                {routes}
+            </StaticRouter>
+        </Provider>
     )
 
     return `

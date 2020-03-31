@@ -1,12 +1,13 @@
 import React from 'react'
-import Home from './page/Home'
+import { BrowserRouter } from 'react-router-dom'
 import { hot } from "react-hot-loader/root";
+import routes from './router'
 
 function App() {
     return (
-        <div className='app'>
-            <Home />
-        </div>
+        <BrowserRouter>
+            {routes}
+        </BrowserRouter>
     )
 }
 

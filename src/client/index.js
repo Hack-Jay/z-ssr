@@ -1,8 +1,8 @@
 import React from 'react'
 import ReactDom from 'react-dom'
-import Home from './page/Home'
+import App from './App'
 
-ReactDom.hydrate(<Home />, document.getElementById('root'))
+ReactDom.hydrate(<App />, document.getElementById('root'))
 
 if (module.hot) {
     module.hot.accept();

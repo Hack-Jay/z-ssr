@@ -6,7 +6,7 @@ const Home = props => {
 
     return <div>
         home page <br />
-        hot replace. <br />
+        hot replace... <br />
         name is {name}, contnet: {content}
         <p>
             <button onClick={() => alert('you have click...')}>click</button>

@@ -3,10 +3,18 @@ import { Route, Switch } from 'react-router-dom'
 import Home from '../page/Home'
 import List from '../page/List'
 
-
-export default (
-    <Switch>
-        <Route path='/' exact component={Home} />
-        <Route path='/list' exact component={List} />
-    </Switch>
-)
+export default [
+    {
+        path: '/',
+        component: Home,
+        exact: true,
+        key: 'home'
+    },
+    {
+        path: '/list',
+        component: List,
+        exact: true,
+        loadData: List.getInitialProps,
+        key: 'list'
+    },
+]

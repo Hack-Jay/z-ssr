@@ -1,19 +1,26 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { connect } from 'react-redux'
+import { getInitialList } from '../../store/actions'
 
-const list = [
-    {id: 1, title: '这是第一条数据'},
-    {id: 2, title: '这是第二条数据'},
-    {id: 3, title: '这是第三条数据'},
-    {id: 4, title: '这是第四条数据'},
-    {id: 5, title: '这是第五条数据'},
-]
+function List(props) {
+    const { list, getInitialList } = props
 
-export default function List() {
+    useEffect(() => {
+        getInitialList()
+    }, [])
+
     return (
         <div>
+            The list:
             {
                 list.map(item => <div key={item.id}>{item.title}</div>)
             }
         </div>    
     )
 }
+
+List.getInitialProps = store => {
+    return store.dispatch(getInitialList())
+}
+
+export default connect(state => state, { getInitialList })(List)

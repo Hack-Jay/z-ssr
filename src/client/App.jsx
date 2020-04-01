@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter } from 'react-router-dom'
+import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import { hot } from "react-hot-loader/root";
 import routes from './router'
@@ -9,7 +9,11 @@ function App() {
     return (
         <Provider store={getStore()} >
             <BrowserRouter>
-                {routes}
+                <Switch>
+                    {routes.map(route => (
+                        <Route {...route} />
+                    ))}
+                </Switch>
             </BrowserRouter>
         </Provider>
     )

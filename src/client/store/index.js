@@ -1,13 +1,13 @@
 import thunk from 'redux-thunk'
 import { createStore, applyMiddleware } from 'redux'
 
-const reducer = (state = { name: 'Barry', content: 'z-ssr' }, action) => {
+const reducer = (state = { name: 'Barry', content: 'z-ssr', list: [] }, action) => {
     const { payload } = action
     switch (action.type) {
-        case 'change_name':
+        case 'chang_list':
             return {
                 ...state,
-                name: payload
+                list: payload
             }
         default:
             return state

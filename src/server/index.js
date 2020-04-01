@@ -1,11 +1,11 @@
 import Koa from 'koa'
 import koaStatic from 'koa-static';
-import cors from 'koa-cors'
+import favicon from 'koa-favicon'
 import reactSsr from './middlewares/react-ssr'
 
 const app = new Koa();
 
-app.use(cors());
+app.use(favicon(__dirname + '../../favicon.ico'))
 app.use(koaStatic('./dist/static'));
 
 app.use(reactSsr);

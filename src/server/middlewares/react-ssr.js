@@ -6,39 +6,39 @@ import { Provider, connect } from "react-redux";
 import routes from "../../client/router";
 import getStroe from "../../client/store";
 
-
 export default async (ctx, next) => {
-    if(ctx.path === '/favicon.ico')  await next()
-    
-    const store = getStroe()
+	// if(ctx.path === '/favicon.ico')  await next()
+
+	const store = getStroe();
 
 	const promises = [];
 
 	const matchedRoutes = matchRoutes(routes, ctx.url);
 
 	matchedRoutes.forEach(item => {
-        if(item.route.loadData) {
-            console.log('item', item)
-            promises.push(item.route.loadData(store));
-        }
+		if (item.route.loadData) {
+			// console.log('item', item)
+			promises.push(item.route.loadData(store));
+		}
 	});
 
-	Promise.all(promises).then(() => {
-        console.log('server store', store.getState())
-        const content = renderToString(
-            <Provider store={store}>
-                <StaticRouter location={ctx.url} context={{}}>
-                    <Switch>
-                        {routes.map(route => (
-                            <Route {...route} />
-                        ))}
-                    </Switch>
-                </StaticRouter>
-            </Provider>
-        );
+	// Promise.all(promises).then((res) => {
+    await Promise.all(promises)
+	console.log("server store", store.getState());
+	const content = renderToString(
+		<Provider store={store}>
+			<StaticRouter location={ctx.url} context={{}}>
+				<Switch>
+					{routes.map(route => (
+						<Route {...route} />
+					))}
+				</Switch>
+			</StaticRouter>
+		</Provider>
+	);
 
-        console.log('content', content)
-        ctx.body = `
+	console.log("content", content);
+	ctx.body = `
         <!DOCTYPE html>
         <html lang="en">
         <head>
@@ -52,5 +52,7 @@ export default async (ctx, next) => {
         </body>
         </html>
         `;
-    });
+	// });
+
+	await next();
 };

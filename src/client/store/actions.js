@@ -20,7 +20,7 @@ export const getInitialList = () => {
             setTimeout(() => {
                 resolve(list)
                 dispatch(changList(list))
-            }, 200)
+            }, 2000)
         })
     }
 }

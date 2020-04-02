@@ -4,12 +4,11 @@ import { StaticRouter, Switch, Route } from "react-router-dom";
 import { matchRoutes } from "react-router-config";
 import { Provider, connect } from "react-redux";
 import routes from "../../client/router";
-import getStroe from "../../client/store";
+import { getStore } from "../../client/store";
+// const { getStore } = require('../../client/store/index')
 
 export default async (ctx, next) => {
-	// if(ctx.path === '/favicon.ico')  await next()
-
-	const store = getStroe();
+	const store = getStore();
 
 	const promises = [];
 
@@ -17,13 +16,11 @@ export default async (ctx, next) => {
 
 	matchedRoutes.forEach(item => {
 		if (item.route.loadData) {
-			// console.log('item', item)
 			promises.push(item.route.loadData(store));
 		}
 	});
 
-	// Promise.all(promises).then((res) => {
-    await Promise.all(promises)
+	await Promise.all(promises);
 	console.log("server store", store.getState());
 	const content = renderToString(
 		<Provider store={store}>
@@ -48,11 +45,12 @@ export default async (ctx, next) => {
         </head>
         <body>
            <div id="root">${content}</div>
-           <script type="text/javascript" src="//localhost:9000/index.js"></script>
+		   <script>window.__initialData=${JSON.stringify(store.getState())}</script>
+		   <script type="text/javascript" src="//localhost:9000/index.js"></script>
+		   
         </body>
         </html>
         `;
-	// });
 
 	await next();
 };

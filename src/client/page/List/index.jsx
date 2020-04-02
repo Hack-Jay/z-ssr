@@ -1,13 +1,17 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
+import axios from 'axios'
 import { getInitialList } from '../../store/actions'
 
 function List(props) {
     const { list, getInitialList } = props
 
-    useEffect(() => {
-        getInitialList()
-    }, [])
+    // useEffect(() => {
+    //     getInitialList()
+    //     // axios.get('https://douban.uieee.com/v2/movie/in_theaters').then(res => {
+    //     //     console.log('res', res)
+    //     // })
+    // }, [])
 
     return (
         <div>

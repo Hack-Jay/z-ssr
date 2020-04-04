@@ -5,7 +5,6 @@ import { matchRoutes } from "react-router-config";
 import { Provider, connect } from "react-redux";
 import routes from "../../client/router";
 import { getStore } from "../../client/store";
-// const { getStore } = require('../../client/store/index')
 
 export default async (ctx, next) => {
 	const store = getStore();

@@ -6,18 +6,15 @@ import { getInitialList } from '../../store/actions'
 function List(props) {
     const { list, getInitialList } = props
 
-    // useEffect(() => {
-    //     getInitialList()
-    //     // axios.get('https://douban.uieee.com/v2/movie/in_theaters').then(res => {
-    //     //     console.log('res', res)
-    //     // })
-    // }, [])
+    useEffect(() => {
+        if(!list.length) getInitialList()
+    }, [])
 
     return (
         <div>
-            The list:
+            The play list:
             {
-                list.map(item => <div key={item.id}>{item.title}</div>)
+                list && list.length && list.map((item, idx) => <div key={idx}>{`name is ${item.name}    listNum: ${item.playlistNum}`}</div>)
             }
         </div>    
     )

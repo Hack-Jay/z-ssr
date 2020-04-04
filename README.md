@@ -1,9 +1,10 @@
 # z-ssr
 从零搭建系列 - ssr
 
+# 接入Redux和数据同构
+在页面渲染的时候，服务端预先取得页面所需要的数据进行服务端渲染，再把数据传给客户端完成同构
+思路：
+根据页面的路由获取改路由的所需数据，在组件里通过定义统一的静态方法getInitialProps获取数据，react-router提供了matchRoutes方法拿到改方法，
+此方法是promise，等promise执行完成后就获取到了数据完成服务端的渲染，
+接着是客户端的渲染，客户端可以通过script标签里的window全局变量拿到挂载数据，再传给组件，实现客户端数据同步
 
-# 客户端路由
-BrowserRouter
-
-# 服务端路由
-StaticRouter

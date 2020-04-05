@@ -1,5 +1,7 @@
 import thunk from 'redux-thunk'
 import { createStore, applyMiddleware } from 'redux'
+import clientAxios from '../request'
+import serverClient from '../../server/request'
 
 const reducer = (state = { name: 'Barry', content: 'z-ssr', list: [] }, action) => {
     const { payload } = action
@@ -15,11 +17,11 @@ const reducer = (state = { name: 'Barry', content: 'z-ssr', list: [] }, action) 
 }
 
 export const getStore = () => {
-    return createStore(reducer, applyMiddleware(thunk))
+    return createStore(reducer, applyMiddleware(thunk.withExtraArgument(serverClient)))
 }
 
 export const getClientStore = () => {
     const defaultState = window.__initialData
     console.log('defaultState', defaultState)
-    return createStore(reducer, defaultState, applyMiddleware(thunk))
+    return createStore(reducer, defaultState, applyMiddleware(thunk.withExtraArgument(clientAxios)))
 }

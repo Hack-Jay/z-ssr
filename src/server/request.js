@@ -1,7 +1,10 @@
 import axios from 'axios'
 
-const instance = axios.create({
-    baseURL: 'https://player.soundario.com/'
+const createInstance = (ctx) => axios.create({
+    baseURL: 'https://player.soundario.com/',
+    headers: {
+        cookie: ctx.request.header.cookies || ''
+    }
 })
 
-export default instance
+export default createInstance

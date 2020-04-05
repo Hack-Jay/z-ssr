@@ -16,8 +16,8 @@ const reducer = (state = { name: 'Barry', content: 'z-ssr', list: [] }, action) 
     }
 }
 
-export const getStore = () => {
-    return createStore(reducer, applyMiddleware(thunk.withExtraArgument(serverClient)))
+export const getStore = (ctx) => {
+    return createStore(reducer, applyMiddleware(thunk.withExtraArgument(serverClient(ctx))))
 }
 
 export const getClientStore = () => {

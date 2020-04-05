@@ -1,13 +1,14 @@
 import React from "react";
 import { renderToString } from "react-dom/server";
 import { StaticRouter, Switch, Route } from "react-router-dom";
-import { matchRoutes } from "react-router-config";
+import { matchRoutes, renderRoutes } from "react-router-config";
 import { Provider, connect } from "react-redux";
 import routes from "../../client/router";
 import { getStore } from "../../client/store";
 
 export default async (ctx, next) => {
-	const store = getStore();
+	console.log('ctx.cookie', ctx)
+	const store = getStore(ctx);
 
 	const promises = [];
 
@@ -25,9 +26,7 @@ export default async (ctx, next) => {
 		<Provider store={store}>
 			<StaticRouter location={ctx.url} context={{}}>
 				<Switch>
-					{routes.map(route => (
-						<Route {...route} />
-					))}
+					{renderRoutes(routes)}
 				</Switch>
 			</StaticRouter>
 		</Provider>

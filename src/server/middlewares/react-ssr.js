@@ -15,7 +15,10 @@ const renderContent = async (ctx, context) => {
 
 	matchedRoutes.forEach((item) => {
 		if (item.route.loadData) {
-			promises.push(item.route.loadData(store));
+			const promise = new Promise((resolve, reject) => {
+				item.route.loadData(store).then(resolve).catch(resolve)
+			})
+			promises.push(promise);
 		}
 	});
 
@@ -52,22 +55,22 @@ const renderHtml = (ctx, content, store) => {
 	</body>
 	</html>
 	`;
-}
+};
 
 export default async (ctx, next) => {
 	const context = { name: "z" };
 	const { content, store } = await renderContent(ctx, context);
 
 	console.log("context", context);
-	if(context.url) {
-		ctx.status = 301
-		renderHtml(ctx, content, store)
-	}else if (context.status == 404) {
-		ctx.status = 404
-		renderHtml(ctx, content, store)
-	}else {
-		renderHtml(ctx, content, store)
+	if (context.url) {
+		ctx.status = 301;
+		renderHtml(ctx, content, store);
+	} else if (context.status == 404) {
+		ctx.status = 404;
+		renderHtml(ctx, content, store);
+	} else {
+		renderHtml(ctx, content, store);
 	}
-	
+
 	await next();
 };

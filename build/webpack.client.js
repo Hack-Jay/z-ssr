@@ -30,6 +30,26 @@ const clientConfig = {
             poll: 500
         }
     },
+    module: {
+        rules: [
+            {
+                test: /\.css?$/,
+                use: [
+                    'style-loader', 
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            importLoaders: 1,
+                            // modules: {
+                            //     localIdentName: '[name]_ [local]_[hash:base64:5]'
+                            // },
+                            modules: true
+                        }
+                    }
+                ]
+            }
+        ]
+    },
     plugins: [new webpack.HotModuleReplacementPlugin()]
 
 }

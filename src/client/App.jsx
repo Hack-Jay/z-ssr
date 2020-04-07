@@ -9,14 +9,13 @@ import { getClientStore } from './store'
 
 const store = getClientStore()
 const insertCss = (...styles) => {
-	const removeCss = styles.map((style) => style._insertCss());
-	return () => removeCss.forEach((dispose) => dispose());
+    console.log('client style', styles);
+    const removeCss = styles.map((style) => style._insertCss && style._insertCss());
+    return () => removeCss.forEach((dispose) => dispose());
 };
-
 function App() {
-    console.log('store', store.getState())
     return (
-        <StyleContext.Provider value={{insertCss}}>
+        <StyleContext.Provider value={{ insertCss }}>
             <Provider store={store} >
                 <BrowserRouter>
                     <Switch>

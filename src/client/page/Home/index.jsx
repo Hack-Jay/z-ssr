@@ -5,7 +5,7 @@ import styles from './index.css'
 
 const Home = props => {
     const { name, content } = props
-
+    console.log('props', styles); 
     return (
         <div
             className={styles.home}
@@ -20,4 +20,5 @@ const Home = props => {
     )
 }
 
-export default withStyles(styles)(connect(state => state, null)(Home))
+// export default Home
+export default connect(state => state, null)(withStyles(styles)(Home))

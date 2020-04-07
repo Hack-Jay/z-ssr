@@ -23,10 +23,12 @@ const serverConfig = {
 						loader: "css-loader",
 						options: {
 							importLoaders: 1,
-							// modules: {
-							// 	localIdentName: "[name]_ [local]_[hash:base64:5]",
-                            // },
-                            modules: true
+							modules: {
+								// localIdentName: "[name]_ [local]_[hash:base64:5]",
+                                localIdentName: '[name]__[local]--[hash:base64:5]',
+
+                            },
+                            // modules: true
 						},
 					},
 				],

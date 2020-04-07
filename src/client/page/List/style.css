@@ -1,0 +1,12 @@
+.list {
+    padding: 10px;
+}
+
+.listItem {
+    margin-top: 5px;
+    list-style: none;
+}
+.listItem:hover {
+    cursor: pointer;
+    color: grey;
+}

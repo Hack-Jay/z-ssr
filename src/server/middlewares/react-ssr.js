@@ -27,7 +27,7 @@ const renderContent = async (ctx, context) => {
 	});
 
 	await Promise.all(promises);
-	console.log("server store", store.getState());
+	// console.log("server store", store.getState());
 	const content = renderToString(
 		<StyleContext.Provider value={{ insertCss }}>
 			<Provider store={store}>

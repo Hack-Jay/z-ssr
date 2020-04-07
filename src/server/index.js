@@ -10,9 +10,6 @@ const options = {
 		"/api/(.*)": {
 			target: "https://player.soundario.com/",
 			changeOrigin: true,
-			// pathRewrite: {
-			// 	"/api": "/mPassenger/ee", // rewrite path
-			// },
 		},
 	},
 };

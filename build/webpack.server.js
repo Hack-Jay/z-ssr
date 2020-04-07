@@ -12,6 +12,7 @@ const serverConfig = {
         path: path.join(__dirname, '../dist'),
         filename: "bundle.js",
     },
+    devtool: 'source-map',
 }
 
 module.exports = merge(baseConfig, serverConfig)

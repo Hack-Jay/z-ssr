@@ -3,6 +3,7 @@ import { renderToString } from "react-dom/server";
 import { StaticRouter, Switch, Route } from "react-router-dom";
 import { matchRoutes, renderRoutes } from "react-router-config";
 import { Provider, connect } from "react-redux";
+import { Helmet } from "react-helmet";
 import routes from "../../client/router";
 import { getStore } from "../../client/store";
 
@@ -32,6 +33,8 @@ export default async (ctx, next) => {
 		</Provider>
 	);
 
+	const helmet = Helmet.renderStatic();
+
 	console.log("content", content);
 	ctx.body = `
         <!DOCTYPE html>
@@ -39,7 +42,9 @@ export default async (ctx, next) => {
         <head>
            <meta charset="UTF-8">
            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-           <title>z-ssr</title>
+		   ${helmet.title.toString()}
+		   ${helmet.meta.toString()}
+		   ${helmet.link.toString()}
         </head>
         <body>
            <div id="root">${content}</div>

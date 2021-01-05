@@ -23,7 +23,7 @@
   "homepage": "https://github.com/Hack-Jay/z-ssr#readme",
   "dependencies": {
     "@babel/preset-react": "^7.9.4",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "koa": "^2.11.0",
     "koa-cors": "^0.0.16",
     "koa-favicon": "^2.1.0",
